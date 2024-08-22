@@ -7,7 +7,7 @@
     <section class="bg-[url('@/assets/images/background-image.webp')] bg-black bg-cover bg-right py-12">
         <Container>
             <div>
-                <h2 class="text-xl lg:text-4xl max-w-lg font-bold text-white leading-normal">6th-HSC Class
+                <h2 class="text-xl lg:text-5xl max-w-2xl font-bold text-white leading-normal">6th-HSC Class
                     Online Batch Admission is Going On!</h2>
                 <p class="text-lg font-medium text-gray-400 py-3">💯 to 💯 preparation of complete syllabus with experienced teachers throughout the year!</p>
             </div>

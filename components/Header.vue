@@ -24,12 +24,12 @@
                 <div class="flex gap-4 justify-between">
                     <div>
                         <ul class="flex items-center gap-6 text-base font-medium text-slate-500">
-                            <li><RouterLink to="/" class="group relative hover:text-primary transition-all ease-in-out duration-500">Class 6-12</RouterLink></li>
-                            <li><RouterLink to="/" class="group relative hover:text-primary transition-all ease-in-out duration-500">Skill</RouterLink></li>
-                            <li><RouterLink to="/" class="group relative hover:text-primary transition-all ease-in-out duration-500">Admission</RouterLink></li>
-                            <li><RouterLink to="/" class="group relative hover:text-primary transition-all ease-in-out duration-500">Online Batch</RouterLink></li>
-                            <li><RouterLink to="/" class="group relative hover:text-primary transition-all ease-in-out duration-500">English Center</RouterLink></li>
-                            <li><RouterLink to="/" class="group relative hover:text-primary transition-all ease-in-out duration-500">More</RouterLink></li>
+                            <li><NuxtLink to="/" class="group relative hover:text-primary transition-all ease-in-out duration-500">Class 6-12</NuxtLink></li>
+                            <li><NuxtLink to="/" class="group relative hover:text-primary transition-all ease-in-out duration-500">Skill</NuxtLink></li>
+                            <li><NuxtLink to="/admission" class="group relative hover:text-primary transition-all ease-in-out duration-500">Admission</NuxtLink></li>
+                            <li><NuxtLink to="/" class="group relative hover:text-primary transition-all ease-in-out duration-500">Online Batch</NuxtLink></li>
+                            <li><NuxtLink to="/" class="group relative hover:text-primary transition-all ease-in-out duration-500">English Center</NuxtLink></li>
+                            <li><NuxtLink to="/" class="group relative hover:text-primary transition-all ease-in-out duration-500">More</NuxtLink></li>
                         </ul>
                     </div>
                     <div class="flex gap-7 items-center">
@@ -40,9 +40,9 @@
                             <Icon name="material-symbols:phone-in-talk-watchface-indicator-sharp" />
                             16910
                         </p>
-                        <button class="rounded-md bg-primary text-center text-white text-sm font-medium px-4 py-1">
+                        <NuxtLink to="/login" class="rounded bg-primary text-center text-white text-sm font-medium px-6 py-1">
                             Login
-                        </button>
+                        </NuxtLink>
                     </div>
                 </div>
             </div>
