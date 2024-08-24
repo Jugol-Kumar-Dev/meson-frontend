@@ -13,10 +13,10 @@ const modules  = [FreeMode, Navigation, Thumbs,Autoplay];
 
 <template>
     <Container>
-        <div class="flex items-center justify-center h-screen">
-            <div class="w-1/2">
-                <div class="max-w-sm mx-auto">
-                    <h2 class="text-xl font-bold text-gray-600 pb-5">Proceed With Mobile Number/Email</h2>
+        <div class="flex flex-col lg:flex-row items-center justify-center h-screen">
+            <div class="w-full lg:w-1/2 pt-20">
+                <div class="max-w-sm mx-auto px-6 lg:px-0">
+                    <h2 class="text-lg lg:text-xl font-bold text-gray-600 pb-5">Proceed With Mobile Number/Email</h2>
                         <input type="text" id="table-search-users"
                             class="block border border-primary w-80 p-3 ps-2 text-sm rounded text-primary bg-white placeholder-slate-500 focus:ring-0 focus:border-primary focus:outline-0"
                             placeholder="Phone Number / Email ">
@@ -27,9 +27,9 @@ const modules  = [FreeMode, Navigation, Thumbs,Autoplay];
                        
                 </div>
             </div>
-            <div class="w-1/2">
-                <div class="max-w-sm mx-auto">
-                    <h2 class="text-xl font-bold text-gray-600 pb-5 text-center">Maintain Study Routine by Attending Daily Live Classes</h2>
+            <div class="w-full lg:w-1/2">
+                <div class="max-w-sm mx-auto px-8 lg:px-0">
+                    <h2 class="text-lg lg:text-xl font-bold text-gray-600 pb-5 text-center">Maintain Study Routine by Attending Daily Live Classes</h2>
                     <Swiper
                             :breakpoints="{
                             '375': {
@@ -71,7 +71,7 @@ const modules  = [FreeMode, Navigation, Thumbs,Autoplay];
                             <img class="w-full object-cover h-72 p-5 rounded-xl" src="https://app.10minuteschool.com/assets/login/routine1.svg" alt="" />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <img class="w-full h-72 object-cover p-5 rounded-xl" src="https://app.10minuteschool.com/assets/login/routine2.svg" alt="" />
+                            <img class="w-full h-72  p-5 rounded-xl" src="https://app.10minuteschool.com/assets/login/routine2.svg" alt="" />
                         </SwiperSlide>
                         
                     </Swiper>   

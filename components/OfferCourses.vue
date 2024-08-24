@@ -13,8 +13,8 @@ const modules  = [FreeMode, Navigation, Thumbs,Autoplay];
 <template>
     <Container>
         <div class="pt-12">
-            <h2 class="text-4xl font-bold text-white py-5 tracking-wider">Great Discounts On Select Skill Development Courses!</h2>
-            <p class="text-lg font-medium text-gray-400">Get selected Ten Minute School courses at special prices throughout the month. Start learning now with Ten Minute School!</p>
+            <h2 class="text-lg lg:text-4xl text-center lg:text-left font-bold text-white py-5 tracking-wider">Great Discounts On Select Skill Development Courses!</h2>
+            <p class="text-xs lg:text-lg text-center lg:text-left font-medium text-gray-400">Get selected Ten Minute School courses at special prices throughout the month. Start learning now with Ten Minute School!</p>
         </div>
         <Swiper
             :breakpoints="{
@@ -48,7 +48,7 @@ const modules  = [FreeMode, Navigation, Thumbs,Autoplay];
             class="mySwiper"
         >
         <SwiperSlide v-for="category in 10" >
-            <div class="flex gap-3 pt-8 pb-20">
+            <div class="flex gap-3 pt-8 pb-10 lg:pb-20">
                 <img class="w-full h-auto p-1 rounded-xl" src="@/assets/images/photo-2.jpg" alt="" />
             </div>
         </SwiperSlide>

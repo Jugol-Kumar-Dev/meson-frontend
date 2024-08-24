@@ -19,3 +19,25 @@
 .swiper-button-next::after {
     font-size:20px !important;
 }
+
+/* hamburg menu */
+.elegance-hamburger-menu {
+    @apply inline-flex;
+}
+.elegance-hamburger-menu .elegance-hamburger-menu__btn--active span {
+    @apply rotate-45 before:rotate-[0] before:top-0 after:rotate-90 after:top-0;
+}
+.elegance-hamburger-menu__btn {
+    @apply flex items-center w-[24px] h-[24px] relative cursor-pointer;
+}
+.elegance-hamburger-menu__btn span {
+    @apply block absolute w-full h-[3px] bg-white transition-all duration-[0.3s] ease-[ease-in-out] before:-top-2 after:top-2;
+}
+.elegance-hamburger-menu__btn span::before,
+.elegance-hamburger-menu__btn span::after {
+    @apply content-[""] block absolute w-full h-[3px] bg-white transition-all duration-[0.3s] ease-[ease-in-out];
+}
+.swiper-button-prev::after, .swiper-button-next::after{
+    color:#ffffff !important;
+    font-size: 20px !important;
+}

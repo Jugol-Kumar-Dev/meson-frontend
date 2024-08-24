@@ -13,8 +13,8 @@ const modules  = [FreeMode, Navigation, Thumbs];
 
 <template>
     <Container>
-        <div class="flex flex-col items-center justify-center py-20 ">
-            <h2 class="text-5xl leading-normal text-gray-800 font-bold text-center">For SSC And HSC Students</h2>
+        <div class="flex flex-col items-center justify-center py-8 lg:py-20 ">
+            <h2 class="text-lg lg:text-5xl leading-normal text-gray-800 font-bold text-center">For SSC And HSC Students</h2>
         </div>
         <Swiper
             :breakpoints="{
@@ -46,8 +46,8 @@ const modules  = [FreeMode, Navigation, Thumbs];
                         <img class="w-full h-36 rounded-t-md " src="@/assets/images/banner-2.gif" alt="" />
                     </div>
                     <div class="px-3 py-6">
-                        <h2 class="text-lg font-semibold pb-4">Every Chapter Will Have Practice as Desired</h2>
-                        <p class="text-lg  text-primary font-bold">৳ 3500</p>
+                        <h2 class="text-sm lg:text-lg font-semibold pb-4">Every Chapter Will Have Practice as Desired</h2>
+                        <p class="text-xs lg:text-lg  text-primary font-bold">৳ 3500</p>
                     </div>
                 </div>
             </SwiperSlide>
