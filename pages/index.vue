@@ -1,6 +1,13 @@
 <script setup>
 
 
+const { data: user,  status, refresh } = await useLazyAsyncData('hero-categories', () =>$fetch(`/user`, {
+  baseURL: useRuntimeConfig().public?.baseUrl,
+  headers: {
+    accept: "application/json",
+  },
+}))
+
 </script>
 <template>
 
