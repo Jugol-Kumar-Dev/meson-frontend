@@ -47,7 +47,7 @@ const modules  = [FreeMode, Navigation, Thumbs];
                     </div>
                     <div class="px-3 py-6">
                         <h2 class="text-sm lg:text-lg font-semibold pb-4">Every Chapter Will Have Practice as Desired</h2>
-                        <p class="text-xs lg:text-lg  text-primary font-bold">৳ 3500</p>
+                        <p class="text-xs lg:text-lg  text-primary-500 font-bold">৳ 3500</p>
                     </div>
                 </div>
             </SwiperSlide>

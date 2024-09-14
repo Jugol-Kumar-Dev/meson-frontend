@@ -1,5 +1,5 @@
 <script setup >
-import {ref, onMounted} from "vue";
+import {ref} from "vue";
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { FreeMode, Navigation, Thumbs,Pagination,Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -8,11 +8,21 @@ import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 const modules  = [FreeMode, Navigation, Thumbs,Autoplay];
 
+
+const { data: courses,  status:courseStatus, refresh:courseRefresh } = await useLazyAsyncData('hero-courses', () =>$fetch(`/hero-courses`, {
+  baseURL: useRuntimeConfig().public?.frontendAppUrl,
+  headers: {
+    accept: "application/json",
+  },
+}))
+
+onMounted(()=> courseRefresh())
+
 </script>
 
 <template>
     <Container>
-        <div class="pt-12">
+      <div class="pt-12">
             <h2 class="text-lg lg:text-4xl text-center lg:text-left font-bold text-white py-5 tracking-wider">Great Discounts On Select Skill Development Courses!</h2>
             <p class="text-xs lg:text-lg text-center lg:text-left font-medium text-gray-400">Get selected Ten Minute School courses at special prices throughout the month. Start learning now with Ten Minute School!</p>
         </div>
@@ -47,10 +57,18 @@ const modules  = [FreeMode, Navigation, Thumbs,Autoplay];
             :modules="modules"
             class="mySwiper"
         >
-        <SwiperSlide v-for="category in 10" >
-            <div class="flex gap-3 pt-8 pb-10 lg:pb-20">
-                <img class="w-full h-auto p-1 rounded-xl" src="@/assets/images/photo-2.jpg" alt="" />
-            </div>
+        <SwiperSlide v-for="course in courses?.courses" >
+            <NuxtLink :to="`/courses/${course.id}`" class="flex gap-3 pt-8 pb-10 lg:pb-20">
+              <div class="bg-white rounded-t-xl overflow-hidden">
+                <img class="w-full h-auto " :src="course?.cover_url" @error="$event.target.src='@/assets/images/photo-2.jpg'" alt="" />
+                <div class="flex flex-col items-center justify-center py-2">
+                  <p class="font-bold text-primary-500 uppercase">
+                    {{ course?.name }}
+                  </p>
+                  <p class="text-xl font-bold">{{ course?.price }}</p>
+                </div>
+              </div>
+            </NuxtLink>
         </SwiperSlide>
         </Swiper>
     </Container>

@@ -104,16 +104,16 @@ const modules  = [FreeMode, Navigation, Thumbs,Autoplay];
                         <div class="px-3 py-6">
                             <h2 class="text-md lg:text-lg font-bold pb-1">Admission Course</h2>
                             <p class="text-gray-500 text-xs lg:text-base font-medium">Hassan Mahmud</p>
-                            <p class="text-primary font-medium text-xs pt-5">Details More...</p>
+                            <p class="text-primary-500 font-medium text-xs pt-5">Details More...</p>
                         </div>
                     </div>
                 </SwiperSlide>
             </Swiper>
             
             <div class="flex justify-center">
-                <button class="flex items-center gap-3 my-9 lg:my-16 rounded bg-white text-primary px-4 py-2 text-lg font-semibold">
+                <button class="flex items-center gap-3 my-9 lg:my-16 rounded bg-white text-primary-500 px-4 py-2 text-lg font-semibold">
                     All Coures
-                    <Icon name="material-symbols:arrow-forward-ios-rounded" class="text-xl text-primary" />
+                    <Icon name="material-symbols:arrow-forward-ios-rounded" class="text-xl text-primary-500" />
                 </button>
             </div>
         </Container>

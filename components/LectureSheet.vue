@@ -4,7 +4,7 @@
             <div class="w-full lg:w-1/2">
                 <h1 class="text-xl lg:text-3xl font-bold lg:max-w-xl text-white leading-relaxed tracking-wide">Need The Best Teacher-Made Class Notes and Lecture Sheets?</h1>
                 <div class="flex justify-center lg:justify-start">
-                    <button class="flex items-center gap-3 my-12 rounded bg-primary text-white px-4 py-2 text-lg font-semibold">
+                    <button class="flex items-center gap-3 my-12 rounded bg-primary-500 text-white px-4 py-2 text-lg font-semibold">
                     Free Download
                         <Icon name="ph:download-simple-bold" class="text-xl text-white" />
                     </button>

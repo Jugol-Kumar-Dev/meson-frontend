@@ -22,23 +22,23 @@
                             <h2 class="text-xl font-bold 
                             leading-loose">Company</h2>
                             <ul class="font-medium text-sm lg:text-base text-gray-700 ">
-                                <li class="hover:text-primary lg:pb-3"><NuxtLink to="/">Career / Recruitment</NuxtLink></li>
-                                <li class="hover:text-primary lg:pb-3"><NuxtLink to="/">Join as a Teacher</NuxtLink></li>
-                                <li class="hover:text-primary lg:pb-3"><NuxtLink to="/">Join as an Affiliate</NuxtLink></li>
-                                <li class="hover:text-primary lg:pb-3"><NuxtLink to="/">Privacy policy</NuxtLink></li>
-                                <li class="hover:text-primary lg:pb-3"><NuxtLink to="/">Refund policy</NuxtLink></li>
-                                <li class="hover:text-primary lg:pb-3"><NuxtLink to="/">Terms & Conditions</NuxtLink></li>
+                                <li class="hover:text-primary-500 lg:pb-3"><NuxtLink to="/">Career / Recruitment</NuxtLink></li>
+                                <li class="hover:text-primary-500 lg:pb-3"><NuxtLink to="/">Join as a Teacher</NuxtLink></li>
+                                <li class="hover:text-primary-500 lg:pb-3"><NuxtLink to="/">Join as an Affiliate</NuxtLink></li>
+                                <li class="hover:text-primary-500 lg:pb-3"><NuxtLink to="/">Privacy policy</NuxtLink></li>
+                                <li class="hover:text-primary-500 lg:pb-3"><NuxtLink to="/">Refund policy</NuxtLink></li>
+                                <li class="hover:text-primary-500 lg:pb-3"><NuxtLink to="/">Terms & Conditions</NuxtLink></li>
                             </ul>
                         </div>
                         <div class="text-center lg:text-left ">
                             <h2 class="text-xl font-bold leading-loose">Others</h2>
                             <ul class="font-medium text-sm lg:text-base text-gray-700 lg:leading-loose">
-                                <li class="hover:text-primary lg:pb-3"><NuxtLink to="/">Blog</NuxtLink></li>
-                                <li class="hover:text-primary lg:pb-3"><NuxtLink to="/">Book Store</NuxtLink></li>
-                                <li class="hover:text-primary lg:pb-3"><NuxtLink to="/">Free Notes & Guides</NuxtLink></li>
-                                <li class="hover:text-primary lg:pb-3"><NuxtLink to="/">Job Preparation Courses</NuxtLink></li>
-                                <li class="hover:text-primary lg:pb-3"><NuxtLink to="/">Verify Certificate</NuxtLink></li>
-                                <li class="hover:text-primary lg:pb-3"><NuxtLink to="/">Free Download</NuxtLink></li>
+                                <li class="hover:text-primary-500 lg:pb-3"><NuxtLink to="/">Blog</NuxtLink></li>
+                                <li class="hover:text-primary-500 lg:pb-3"><NuxtLink to="/">Book Store</NuxtLink></li>
+                                <li class="hover:text-primary-500 lg:pb-3"><NuxtLink to="/">Free Notes & Guides</NuxtLink></li>
+                                <li class="hover:text-primary-500 lg:pb-3"><NuxtLink to="/">Job Preparation Courses</NuxtLink></li>
+                                <li class="hover:text-primary-500 lg:pb-3"><NuxtLink to="/">Verify Certificate</NuxtLink></li>
+                                <li class="hover:text-primary-500 lg:pb-3"><NuxtLink to="/">Free Download</NuxtLink></li>
                             </ul>
                         </div>
                     </div>
@@ -47,10 +47,10 @@
                     <div class="px-4 lg:px-8 text-center lg:text-left pt-6 lg:pt-0">
                         <h2 class="text-xl font-bold leading-loose">Others</h2>
                         <ul class="leading-loose text-base">
-                            <li class="lg:pb-3">Call Us: <span class="text-primary lg:px-3">16910</span>  (24x7)</li>
-                            <li class="lg:pb-3">whatsapp: <span class="text-primary lg:px-3"> +8801896016252</span>  (24x7)</li>
-                            <li class="lg:pb-3">Outside Bangladesh: <span class="text-primary lg:px-3">+880 9612001010</span></li>
-                            <li class="lg:pb-3">Email Us: <span class="text-primary lg:px-3">support@meson.com</span></li>
+                            <li class="lg:pb-3">Call Us: <span class="text-primary-500 lg:px-3">16910</span>  (24x7)</li>
+                            <li class="lg:pb-3">whatsapp: <span class="text-primary-500 lg:px-3"> +8801896016252</span>  (24x7)</li>
+                            <li class="lg:pb-3">Outside Bangladesh: <span class="text-primary-500 lg:px-3">+880 9612001010</span></li>
+                            <li class="lg:pb-3">Email Us: <span class="text-primary-500 lg:px-3">support@meson.com</span></li>
                         </ul>
                     </div>
                 <div>

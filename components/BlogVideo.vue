@@ -19,7 +19,7 @@
             </div>  
         </div>
         <div class="flex justify-center">
-            <button class="flex items-center gap-3 my-8 lg:my-16 rounded bg-primary hover:bg-purple-700 text-white px-4 py-2 text-lg font-semibold">
+            <button class="flex items-center gap-3 my-8 lg:my-16 rounded bg-primary-500 hover:bg-purple-700 text-white px-4 py-2 text-lg font-semibold">
                 Chooce Your Class
                 <Icon name="material-symbols:arrow-forward-ios-rounded" class="text-xl text-white" />
             </button>
