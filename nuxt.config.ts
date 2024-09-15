@@ -7,7 +7,8 @@ export default defineNuxtConfig({
         "@nuxtjs/tailwindcss",
         "@nuxt/icon",
         "@pinia/nuxt",
-        "pinia-plugin-persistedstate/nuxt"
+        "pinia-plugin-persistedstate/nuxt",
+        "@vueuse/motion/nuxt"
     ],
     runtimeConfig: {
         public: {
