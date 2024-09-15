@@ -1,8 +1,11 @@
 <script setup lang="ts">
 
+import {useApiFetch} from "~/composables/useApiFetch";
+
 definePageMeta({
   middleware:['auth']
 })
+
 
 
 
@@ -18,8 +21,37 @@ const {
     accept: "application/json",
   },
 }))
+const price = ref(course.value?.course?.price)
 
-console.log(route.query)
+const discount = (event: any) => price.value = price.value - event.target.value
+
+const data = reactive({
+  course_id: course.value?.course?.id,
+  post_office: null,
+  thana: null,
+  price: price.value,
+  district: null,
+  full_address: null,
+  paymentMethod:'ssl'
+})
+
+const {data:orderResponse, error, execute} = await useApiFetch("/create-order", {
+  method: "POST",
+  body: data,
+  immediate:false,
+  lazy: true
+});
+const submitCheckout = async () =>{
+  await execute();
+  if(orderResponse.value){
+    await navigateTo(orderResponse.value?.url?.data, {
+      external:true,
+    })
+  }
+  console.log('response', )
+  console.log('error', error)
+}
+
 
 </script>
 
@@ -47,13 +79,27 @@ console.log(route.query)
           <div>
             <h2 class="px-5 py-2 bg-primary-500 text-white font-bold">Where Are you From?</h2>
             <div class="mt-10 flex flex-col gap-5">
+
               <div class="flex items-center gap-5">
-                <input type="text" class="px-2 w-full rounded-none py-3 border focus:outline-none focus:border-primary" placeholder="Post Office"/>
-                <input type="text" class="px-2 w-full rounded-none py-3 border focus:outline-none focus:border-primary" placeholder="Thana / Sub-District"/>
-                <input type="text" class="px-2 w-full rounded-none py-3 border focus:outline-none focus:border-primary" placeholder="District"/>
+                <div>
+                  <input type="text" v-model="data.post_office" class="px-2 w-full rounded-none py-3 border focus:outline-none focus:border-primary" placeholder="Post Office"/>
+                  <span class="text-red-500" v-if="error?.data?.errors?.post_office">{{ error?.data?.errors?.post_office[0] }}</span>
+                </div>
+
+                <div>
+                  <input type="text" v-model="data.thana" class="px-2 w-full rounded-none py-3 border focus:outline-none focus:border-primary" placeholder="Thana / Sub-District"/>
+                  <span class="text-red-500" v-if="error?.data?.errors?.thana">{{ error?.data?.errors?.thana[0] }}</span>
+                </div>
+
+                <div>
+                  <input type="text" v-model="data.district" class="px-2 w-full rounded-none py-3 border focus:outline-none focus:border-primary" placeholder="District"/>
+                  <span class="text-red-500" v-if="error?.data?.errors?.district">{{ error?.data?.errors?.district[0] }}</span>
+                </div>
+
               </div>
               <div>
-                <input type="text" class="px-2 w-full rounded-none py-3 border focus:outline-none focus:border-primary" placeholder="Full Address"/>
+                <input type="text" v-model="data.full_address" class="px-2 w-full rounded-none py-3 border focus:outline-none focus:border-primary" placeholder="Full Address"/>
+                <span class="text-red-500" v-if="error?.data?.errors?.full_address">{{ error?.data?.errors?.full_address[0] }}</span>
               </div>
             </div>
           </div>
@@ -64,18 +110,23 @@ console.log(route.query)
             <div class="flex flex-col gap-5 mb-10 px-5">
               <div class="flex justify-between items-center">
                 <p class="font-bold text-lg">Course Price: </p>
-                <p class="text-2xl font-semibold p-3">৳ {{ course?.course?.price }}</p>
+                <p class="text-2xl font-semibold p-3">৳ {{ price }}</p>
               </div>
 
               <div class="flex justify-between mb-5">
-                <input type="text" class="px-2 w-full rounded-none py-3 border focus:outline-none focus:border-primary" placeholder="enter promo"/>
+                <input type="number"
+                       class="px-2 w-full rounded-none py-3 border focus:outline-none focus:border-primary"
+                       @input="discount"
+                       placeholder="enter promo"/>
                 <button class="bg-primary-500 w-[30%] text-white px-2 py-3">Try Now</button>
               </div>
 
-              <NuxtLink :to="`/admission?course=${course?.course?.id}`"
-                        class="flex items-center justify-center gap-3 w-full rounded bg-primary-500 hover:bg-purple-900 text-white px-4 py-2 text-lg font-semibold">
+              <button
+                  @click="submitCheckout"
+                  type="button"
+                  class="flex items-center justify-center gap-3 w-full rounded bg-primary-500 hover:bg-purple-900 text-white px-4 py-2 text-lg font-semibold">
                 Payment Now
-              </NuxtLink>
+              </button>
 
             </div>
 

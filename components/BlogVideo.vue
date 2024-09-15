@@ -6,7 +6,7 @@
         </div>
 
         <div class="flex flex-col lg:flex-row lg:pt-16">
-            <div class="w-full lg:w-1/3 px-4" v-for="item in 3">
+            <div class="w-full lg:w-1/3 px-4" v-for="item in 3" v-motion-fade-visible>
                 <div class="rounded-xl border hover:border-primary transition-all ease-in-out duration-500">
                     <div class="p-2">
                         <img class="w-full rounded-xl " src="https://cdn.10minuteschool.com/images/thumbnails/HSC_26_OB_Thumbnails/hsc-2026-online-batch-science-group-thumbnail.jpg?w=272&h=152" alt="" />
