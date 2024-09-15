@@ -32,7 +32,6 @@ onBeforeUnmount(() => {
   }
 });
 const handleImageError = (event) => {
-  console.log(event)
   const authUserName = authStore?.authUser?.name || 'User';
   event.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(authUserName)}`;
 };
