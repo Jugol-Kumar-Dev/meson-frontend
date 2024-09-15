@@ -3,25 +3,40 @@ const activeLink = ref(null);
 const setItem = (item) => activeLink.value = item
 const menus = ref([
   {
-    name:'Dashboard',
-    path:'/student/dashboard',
-    icon:'solar:home-smile-angle-bold-duotone',
+    name: 'Dashboard',
+    path: '/student/dashboard',
+    icon: 'solar:home-smile-angle-bold-duotone',
   },
-{
-    name:'ACL Management',
-    icon:'solar:shield-user-bold-duotone',
-    submenu:[
+  {
+    name: 'Courses',
+    icon: 'solar:chat-round-video-bold-duotone',
+    submenu: [
       {
-        name:'Roles',
-        path:'#',
+        name: 'Enrolled Courses',
+        path: '/student/courses/enrolled',
         can: ['authorization.index'],
       },
       {
-        name:'Create Role',
-        path:'#',
+        name: 'Add Course',
+        path: '#',
         can: ['authorization.create'],
       }
     ]
+  },
+  {
+    name: 'Past Exams',
+    path: '/student/exam/pastexams',
+    icon: 'solar:question-circle-bold-duotone',
+  },
+  {
+    name: 'Practice Exams',
+    path: '/student/exam/practiceexam',
+    icon: 'solar:question-square-bold-duotone',
+  },
+  {
+    name: 'Past Classes',
+    path: '/student/dashboard',
+    icon: 'solar:bookmark-square-bold-duotone',
   },
   /*   {
      name:'Users',
@@ -95,11 +110,12 @@ const menus = ref([
     </div>
     <ul class="flex flex-col">
       <template v-for="item in menus">
-<!--        <li class="sidebar-item" v-if="item?.submenu?.length && (user.roles[0]?.name === supperAdmin || item.can?.some(permission => user.can?.includes(permission)))">-->
+        <!--        <li class="sidebar-item" v-if="item?.submenu?.length && (user.roles[0]?.name === supperAdmin || item.can?.some(permission => user.can?.includes(permission)))">-->
         <li class="sidebar-item" v-if="item?.submenu?.length">
-          <div class="group flex items-center gap-3 rounded-lg transition-all ease-in-out duration-300 cursor-pointer relative"
-               @click="setItem(activeLink === item.name ? null : item.name)">
-            <Icon :name="item.icon" class="text-white" />
+          <div
+              class="group flex items-center gap-3 rounded-lg transition-all ease-in-out duration-300 cursor-pointer relative"
+              @click="setItem(activeLink === item.name ? null : item.name)">
+            <Icon :name="item.icon" class="text-white"/>
             <span class="text-white text-xs font-normal transition-all ease-in-out duration-300">{{ item.name }}</span>
             <div class="absolute top-1/2 -translate-y-1/2 right-2 transition-all  ease-in-out duration-300"
                  :class="{'rotate-90 ' : activeLink === item.name}">
@@ -108,9 +124,10 @@ const menus = ref([
             </div>
           </div>
           <div class="overflow-hidden">
-            <ul class="shop-links flex flex-col gap-4 pl-4 py-4" :class="{'shop-links--active' : activeLink === item.name}">
-              <template v-for="menu in item?.submenu" >
-<!--                <li v-if="user.roles[0]?.name === supperAdmin || menu.can?.some(subPer => user.can?.includes(subPer))">-->
+            <ul class="shop-links flex flex-col gap-4 pl-4 py-4"
+                :class="{'shop-links--active' : activeLink === item.name}">
+              <template v-for="menu in item?.submenu">
+                <!--                <li v-if="user.roles[0]?.name === supperAdmin || menu.can?.some(subPer => user.can?.includes(subPer))">-->
                 <li>
                   <RouterLink :to="menu.path" class="flex items-center gap-3 ">
                     <Icon name="solar:check-read-line-duotone" class="text-white"/>
@@ -121,10 +138,10 @@ const menus = ref([
             </ul>
           </div>
         </li>
-<!--        <li class="sidebar-item" v-else v-if="!item?.submenu?.length && (user.roles[0]?.name === supperAdmin || item.can?.some(permission => user.can?.includes(permission)))">-->
+        <!--        <li class="sidebar-item" v-else v-if="!item?.submenu?.length && (user.roles[0]?.name === supperAdmin || item.can?.some(permission => user.can?.includes(permission)))">-->
         <li class="sidebar-item" v-else>
           <RouterLink :to="item.path" class="flex items-center gap-2">
-            <Icon :name="item.icon" class="text-white" />
+            <Icon :name="item.icon" class="text-white"/>
             <p class="text-white text-xs">{{ item?.name }}</p>
           </RouterLink>
         </li>

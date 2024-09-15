@@ -1,7 +1,7 @@
 <script setup>
 </script>
 <template>
-  <div class="w-full bg-secondary-300 min-h-screen flex">
+  <div class="w-full bg-secondary-200 min-h-screen flex">
     <aside class="w-48 mx-auto overflow-y-scroll scrollbar-hide fixed top-0 left-0 bottom-0 h-screen bg-secondary-900">
       <StudentSideBar />
     </aside>
