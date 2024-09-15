@@ -16,7 +16,7 @@ definePageMeta({
 const { setToken, setAuthUser } = useTokenStore();
 const form = ref()
 const state = reactive({
-  email: 'vendor@vendor.com',//undefined,
+  email: 'student@student.com',//undefined,
   password: '12345678',//undefined,
   remember: false
 })
@@ -36,10 +36,12 @@ const onSubmit = async () => {
   }
   if (!error.value){
     setToken(data.value)
+    console.log(data.value)
     const userData = await fetchUser();
     setAuthUser(userData?.data?.value)
     alert('login successfully done...')
     if(userData?.data?.value){
+      console.log('redirect', route)
       return navigateTo(route?.query?.redirect ?? '/student/dashboard')
     }
   }
