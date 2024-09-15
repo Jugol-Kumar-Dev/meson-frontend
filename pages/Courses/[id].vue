@@ -1,21 +1,18 @@
 <script setup>
 const route = useRoute();
-const {
-  data: course,
-  status,
-  refresh
-} = await useLazyAsyncData(`single-course-${route.params?.id}`, () => $fetch(`/get-single-course/${route.params?.id}`, {
-  baseURL: useRuntimeConfig().public?.frontendAppUrl,
-  headers: {
-    accept: "application/json",
-  },
-}))
+const {data: course, refresh, status} = await useLazyAsyncData(`single-course-${route.params?.id}`, () =>
+    $fetch(`/get-single-course/${route.params?.id}`, {
+      baseURL: useRuntimeConfig().public?.frontendAppUrl,
+      headers: {
+        accept: "application/json",
+      },
+    })
+);
 
+onMounted(async () => await refresh())
 
-onMounted(() => refresh())
-
-const frequentlyAskQuestion = computed(()=> course.value?.course?.faqs ? JSON.parse(course.value?.course?.faqs) : [])
-const features = computed(()=> course?.course?.features ? JSON.parse(course?.course?.features) : [])
+const frequentlyAskQuestion = computed(() => course.value?.course?.faqs ? JSON.parse(course.value?.course?.faqs) : [])
+const features = computed(() => course?.course?.features ? JSON.parse(course?.course?.features) : [])
 // const includes = computed(()=> course?.course?.inclues ? JSON.parse(course?.course?.inclues) : [])
 
 </script>
@@ -107,21 +104,21 @@ const features = computed(()=> course?.course?.features ? JSON.parse(course?.cou
               </div>
             </div>
           </div>
-
-
-          <div class="w-full lg:w-1/3 px-2 order-first lg:order-none pt-8">
+          <div v-if="status === 'success'" class="w-full lg:w-1/3 px-2 order-first lg:order-none pt-8">
             <div class="bg-white lg:-mt-[300px] relative z-40 ">
               <img class="p-1 w-full"
                    :src="course?.course?.cover_url" alt="">
               <p class="text-2xl font-semibold p-3">৳ {{ course?.course?.price }}</p>
               <div class="mx-5">
-                <NuxtLink :to="`/admission?course=${course?.course?.id}`" class="flex items-center justify-center gap-3 w-full rounded bg-primary-500 hover:bg-purple-900 text-white px-4 py-2 text-lg font-semibold">
+                <NuxtLink :to="`/admission?course=${course?.course?.id}`"
+                          class="flex items-center justify-center gap-3 w-full rounded bg-primary-500 hover:bg-purple-900 text-white px-4 py-2 text-lg font-semibold">
                   Enroll Now
                 </NuxtLink>
               </div>
 
               <h2 class="text-xl font-semibold p-3 pt-9">What is in this course</h2>
-              <ul class="p-3 leading-loose text-gray-600 pl-6" v-if="course?.course?.inclues && JSON.parse(course?.course?.inclues)?.length">
+              <ul class="p-3 leading-loose text-gray-600 pl-6"
+                  v-if="course?.course?.inclues && JSON.parse(course?.course?.inclues)?.length">
                 <li class="flex items-center gap-5" v-for="item in JSON.parse(course?.course?.inclues)">
                   <span><Icon :name="item?.icon" class="text-lg"/></span>
                   <p>{{ item?.title }}</p>
@@ -137,6 +134,7 @@ const features = computed(()=> course?.course?.features ? JSON.parse(course?.cou
               </div>
             </div>
           </div>
+          <FrontendEnrollArea v-else/>
         </div>
       </div>
     </Container>
