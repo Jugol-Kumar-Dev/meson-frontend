@@ -11,7 +11,9 @@ export default defineStore('auth', ()=>{
 
 
     async function login(credential: any){
-        await $fetch(useRuntimeConfig().public.baseUrl+ '/sanctum/csrf-cookie')
+        await $fetch(useRuntimeConfig().public.baseUrl+ '/sanctum/csrf-cookie',{
+            credentials:'include'
+        })
         return useApiFetch("/login", {
             method: "POST",
             body: credential,

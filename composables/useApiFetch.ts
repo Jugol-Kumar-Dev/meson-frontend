@@ -12,6 +12,7 @@ export function useApiFetch<T>(path: string, options: UseFetchOptions<T> = {}) {
 
   const token = useCookie('XSRF-TOKEN');
 
+
   if (token.value) {
     headers['X-XSRF-TOKEN'] = token.value as string;
   }
@@ -23,6 +24,7 @@ export function useApiFetch<T>(path: string, options: UseFetchOptions<T> = {}) {
     }
   }
 
+  console.log("headers data", headers)
   return useFetch(config.public.studentAppUrl + path, {
     credentials: "include",
     watch: false,
