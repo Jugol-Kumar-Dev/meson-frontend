@@ -31,7 +31,7 @@ onMounted(()=>{
 <template>
   <div class="w-full h-full min-h-screen">
     <div class="flex justify-between w-full mt-20 bg-white shadow-lg p-10">
-      <div class="">
+      <div class="w-1/3">
         <p class="text-xl font-bold">{{ exams?.name }}</p>
         <p>Total Exam questions: <span>{{ exams?.total_q }}</span></p>
         <p>Duration: <span>{{ exams?.duration }}</span></p>
@@ -40,15 +40,21 @@ onMounted(()=>{
         <p>Minus Mark: <span>{{ exams?.minus_mark }}</span></p>
         <p>Pass Mark: <span>{{ exams?.pass_mark }}</span></p>
       </div>
-      <div class="">
+      <div class="w-1/3">
         <p>Instraction For Given Exam</p>
-        <p>{{ exams?.about }}</p>
+        <p class="whitespace-pre-wrap">{{ exams?.about }}</p>
       </div>
-      <div>
-        <NuxtLink to="/" class="flex items-center gap-1 bg-primary-200 px-4 py-2 hover:bg-primary-500 hover:text-primary-100 font-semibold text-sm rounded transition-all ease-in-out">
-          <Icon name="solar:arrow-left-line-duotone"/>
-          <span>Go Back</span>
-        </NuxtLink>
+      <div class="w-1/3 flex items-start justify-end">
+        <div class="w-max flex gap-3">
+          <NuxtLink to="/" class="flex items-center gap-1 bg-primary-200 px-4 py-2 hover:bg-primary-500 hover:text-primary-100 font-semibold text-sm rounded transition-all ease-in-out">
+            <Icon name="solar:arrow-left-line-duotone"/>
+            <span>Go Back</span>
+          </NuxtLink>
+          <NuxtLink to="/student/givenexam" class="flex items-center gap-1 hover:bg-primary-200 px-4 py-2 bg-primary-500 hover:text-primary-700 text-primary-100 font-semibold text-sm rounded transition-all ease-in-out">
+            <span>Start Exam</span>
+            <Icon name="solar:arrow-right-line-duotone"/>
+          </NuxtLink>
+        </div>
       </div>
     </div>
   </div>
