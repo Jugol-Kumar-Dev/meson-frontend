@@ -20,56 +20,65 @@ onMounted(()=> courseRefresh())
 
 </script>
 
-<template>
-    <Container>
-      <div class="pt-12">
-            <h2 class="text-lg lg:text-4xl text-center lg:text-left font-bold text-white py-5 tracking-wider">Great Discounts On Select Skill Development Courses!</h2>
-            <p class="text-xs lg:text-lg text-center lg:text-left font-medium text-gray-400">Get selected Ten Minute School courses at special prices throughout the month. Start learning now with Ten Minute School!</p>
+<template><Container>
+  <div class="pt-12">
+    <h2 class="text-lg lg:text-4xl text-center lg:text-left font-bold text-white py-5 tracking-wider">
+      Great Discounts On Select Skill Development Courses!
+    </h2>
+    <p class="text-xs lg:text-lg text-center lg:text-left font-medium text-gray-400">
+      Get selected Ten Minute School courses at special prices throughout the month. Start learning now with Ten Minute School!
+    </p>
+  </div>
+  <Swiper
+      :breakpoints="{
+      '375': {
+        slidesPerView: 2,
+        spaceBetween: 10,
+      },
+      '768': {
+        slidesPerView: 3,
+        spaceBetween: 10,
+      },
+      '1024': {
+        slidesPerView: 5,
+        spaceBetween: 30,
+      },
+    }"
+      :centeredSlides="true"
+      :speed="3000"
+      :freeMode="true"
+      :freeModeMomentum="false"
+      :freeModeMomentumBounce="false"
+      :grabCursor="true"
+      :autoplay="{
+      delay: 0,
+      disableOnInteraction: true,
+    }"
+      :loop="true"
+      :allowTouchMove="true"
+      :disableOnInteraction="true"
+      :modules="modules"
+      class="mySwiper"
+  >
+    <SwiperSlide v-for="course in courses?.courses" :key="course.id">
+      <NuxtLink :to="`/courses/${course.id}`" class="flex gap-3 pt-8 pb-10 lg:pb-20">
+        <div class="flex flex-col h-full bg-white rounded-t-xl overflow-hidden">
+          <img
+              class="w-full h-auto"
+              :src="course?.cover_url"
+              @error="$event.target.src='@/assets/images/photo-2.jpg'"
+              alt=""
+          />
+          <div class="flex-grow flex flex-col items-center justify-center py-2">
+            <p class="font-bold text-primary-500 uppercase">
+              {{ course?.name }}
+            </p>
+            <p class="text-xl font-bold">{{ course?.price }}</p>
+          </div>
         </div>
-        <Swiper
-            :breakpoints="{
-            '375': {
-                slidesPerView: 2,
-                spaceBetween: 10,
-            },
-            '768': {
-                slidesPerView: 3,
-                spaceBetween: 10,
-            },
-            '1024': {
-                slidesPerView: 5,
-                spaceBetween: 30,
-            },
-        }"
-            :centeredSlides="true"
-            :speed= "3000"
-            :freeMode="true"
-            :freeModeMomentum="false"
-            :freeModeMomentumBounce="false"
-            :grabCursor="true"
-            :autoplay= "{
-            delay: 0,
-            disableOnInteraction: true,
-        }"
-            :loop="true"
-            :allowTouchMove="true"
-            :disableOnInteraction="true"
-            :modules="modules"
-            class="mySwiper"
-        >
-        <SwiperSlide v-for="course in courses?.courses" >
-            <NuxtLink :to="`/courses/${course.id}`" class="flex gap-3 pt-8 pb-10 lg:pb-20">
-              <div class="bg-white rounded-t-xl overflow-hidden">
-                <img class="w-full h-auto " :src="course?.cover_url" @error="$event.target.src='@/assets/images/photo-2.jpg'" alt="" />
-                <div class="flex flex-col items-center justify-center py-2">
-                  <p class="font-bold text-primary-500 uppercase">
-                    {{ course?.name }}
-                  </p>
-                  <p class="text-xl font-bold">{{ course?.price }}</p>
-                </div>
-              </div>
-            </NuxtLink>
-        </SwiperSlide>
-        </Swiper>
-    </Container>
+      </NuxtLink>
+    </SwiperSlide>
+  </Swiper>
+</Container>
+
 </template>

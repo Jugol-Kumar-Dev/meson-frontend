@@ -25,15 +25,12 @@ export default defineStore('auth', ()=>{
         return useApiFetch("/register", {
             method: "POST",
             body: signupData,
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            }
         });
     }
 
     // @ts-ignore
     async function logout(){
-        const {data, error} = await useApiFetch("logout",{method:"POST"})
+        const {data, error} = await useApiFetch("/logout",{method:"POST"})
         if(data.value) {
             // @ts-ignore
             useTokenStore().removeToken()
@@ -44,6 +41,8 @@ export default defineStore('auth', ()=>{
             useTokenStore().removeToken()
             return navigateTo('/login')
         }
+
+        useTokenStore().removeToken()
     }
 
     return { login,signup, logout, fetchUser}

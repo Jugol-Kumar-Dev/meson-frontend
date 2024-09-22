@@ -26,7 +26,7 @@
                         <ul class="flex items-center gap-6 text-base font-medium text-slate-500">
                             <li><NuxtLink to="/" class="group relative hover:text-primary-500 transition-all ease-in-out duration-500">Class 6-12</NuxtLink></li>
                             <li><NuxtLink to="/" class="group relative hover:text-primary-500 transition-all ease-in-out duration-500">Skill</NuxtLink></li>
-                            <li><NuxtLink to="/admission" class="group relative hover:text-primary-500 transition-all ease-in-out duration-500">Admission</NuxtLink></li>
+                            <li><NuxtLink to="/" class="group relative hover:text-primary-500 transition-all ease-in-out duration-500">Admission</NuxtLink></li>
                             <li><NuxtLink to="/" class="group relative hover:text-primary-500 transition-all ease-in-out duration-500">Online Batch</NuxtLink></li>
                             <li><NuxtLink to="/" class="group relative hover:text-primary-500 transition-all ease-in-out duration-500">English Center</NuxtLink></li>
                             <li><NuxtLink to="/" class="group relative hover:text-primary-500 transition-all ease-in-out duration-500">More</NuxtLink></li>

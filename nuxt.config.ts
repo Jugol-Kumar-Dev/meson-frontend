@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     compatibilityDate: '2024-04-03',
-    devtools: {enabled: true},
+    devtools: {enabled: false},
     css:["~/assets/css/main.css"],
     modules: [
         "@nuxtjs/tailwindcss",
@@ -19,5 +19,12 @@ export default defineNuxtConfig({
             frontendAppUrl: import.meta.env.BASE_URL + import.meta.env.FRONTEND_API_PREFIX,
             studentAppUrl: import.meta.env.BASE_URL + import.meta.env.STUDENT_API_PREFIX,
         }
+    },
+    nitro:{
+        routeRules:{
+            '/courses/*': {prerender:false},
+            '/admission/*': {prerender:false}
+        }
     }
+
 })

@@ -1,7 +1,10 @@
 <script setup>
 
 
-const { data: categories,  status, refresh } = await useLazyAsyncData('hero-categories', () =>$fetch(`/hero-categories`, {
+import {onMounted} from "vue";
+
+const { data: categories,  status, refresh } = await useLazyAsyncData('hero-categories',
+    () =>$fetch(`/hero-categories`, {
   baseURL: useRuntimeConfig().public?.frontendAppUrl,
   headers: {
     accept: "application/json",
@@ -9,7 +12,20 @@ const { data: categories,  status, refresh } = await useLazyAsyncData('hero-cate
 }))
 
 
-onMounted(()=>refresh())
+
+const { data: homeCourses,  status:homeCourseStatus, refresh:homeCourseRef } = await useLazyAsyncData('home-page-courses',
+    () =>$fetch(`/home-page-courses`, {
+      baseURL: useRuntimeConfig().public?.frontendAppUrl,
+      headers: {
+        accept: "application/json",
+      },
+    }))
+
+onMounted(async()=>{
+  await refresh()
+  await homeCourseRef()
+})
+
 
 </script>
 <template>
@@ -112,11 +128,11 @@ onMounted(()=>refresh())
 
     <!-- blog section -->
 
-    <BlogVideo />
+    <BlogVideo v-motion-fade-visible />
 
     <!-- HSC & SSC For student -->
 
-    <HscForStudent />
+    <HscForStudent v-for="item in homeCourses" :sectionInfo="item"/>
 
     <!-- Skill Development Course  -->
 

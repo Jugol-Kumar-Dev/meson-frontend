@@ -6,6 +6,7 @@ const isDropdownOpen = ref(false);
 const dropdown = ref(null);
 const dropdownButton = ref(null);
 const authStore = useTokenStore();
+const {logout} = useAuthStore()
 const toggleDropdown = () => {
   isDropdownOpen.value = !isDropdownOpen.value;
 };
@@ -36,11 +37,17 @@ const handleImageError = (event) => {
   event.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(authUserName)}`;
 };
 const isBlur = ref(false);
+const logoutLoading = ref(false)
+const logoutUser = ()=>{
+  logoutLoading.value = true;
+  logout()
+}
+
 </script>
 
 
 <template>
-    <div class="w-full max-w-[calc(100%-13rem)] h-16 border-b backdrop-blur-xl transition-all ease-in-out fixed top-0 z-50" :class="isBlur ? 'bg-white/10' : 'bg-white'">
+    <div class="w-full lg:max-w-[calc(100%-13rem)] h-16 border-b backdrop-blur-xl transition-all ease-in-out fixed top-0 z-50" :class="isBlur ? 'bg-white/10' : 'bg-white'">
         <div class="px-8 flex w-full h-full justify-between items-center">
             <a href="/"
                target="_blank">
@@ -65,7 +72,7 @@ const isBlur = ref(false);
 
                 <!-- Dropdown menu -->
                 <div v-show="isDropdownOpen" ref="dropdown" id="dropdown" class="z-10 bg-white divide-y divide-gray-100 rounded-lg overflow-hidden shadow w-44 dark:bg-gray-700 absolute mt-2">
-                    <div v-if="authStore.loading" class="flex items-center justify-center py-5">
+                    <div v-if="logoutLoading" class="flex items-center justify-center py-5">
                         <div role="status">
                             <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
@@ -89,7 +96,7 @@ const isBlur = ref(false);
                         </li>
 
                         <li class="border-t">
-                            <a class="flex items-center text-xs gap-3 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                            <a @click="logoutUser" class="flex items-center text-xs gap-3 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                 <Icon name="solar:logout-2-bold-duotone" size="20" />
                                 <span>Sign out</span>
                             </a>

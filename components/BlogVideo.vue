@@ -1,3 +1,16 @@
+<script setup>
+const { data,  status, refresh } =
+    await useLazyAsyncData('home-blogs',
+    () =>$fetch(`/home-blogs`, {
+      baseURL: useRuntimeConfig().public?.frontendAppUrl,
+      headers: {
+        accept: "application/json",
+      },
+    }))
+
+onMounted(()=> refresh())
+</script>
+
 <template>
     <Container>
         <div class="flex flex-col items-center justify-center  pt-10 lg:pt-20 ">
@@ -5,15 +18,20 @@
             <p class="text-center text-xs lg:text-lg font-medium py-4 text-gray-600">May the Progress of Education Continue From any Part of the Country Under the Care of the Best Teachers</p>
         </div>
 
-        <div class="flex flex-col lg:flex-row lg:pt-16">
-            <div class="w-full lg:w-1/3 px-4" v-for="item in 3" v-motion-fade-visible>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+            <div class="col-span-1 px-4" v-for="item in data" v-motion-fade-visible>
                 <div class="rounded-xl border hover:border-primary transition-all ease-in-out duration-500">
                     <div class="p-2">
-                        <img class="w-full rounded-xl " src="https://cdn.10minuteschool.com/images/thumbnails/HSC_26_OB_Thumbnails/hsc-2026-online-batch-science-group-thumbnail.jpg?w=272&h=152" alt="" />
+                        <img class="w-full rounded-xl "
+                             :src="item?.image_url" alt="" />
                     </div>
                     <div class="p-5">
-                        <h2 class="text-lg lg:text-xl font-semibold pb-3">Every Chapter Will Have Practice as Desired</h2>
-                        <p class="text-xs lg:text-sm text-gray-600 font medium">Online batch library provides opportunity to practice chapter-wise questions of all subjects</p>
+                        <h2 class="text-lg lg:text-xl font-semibold pb-3">
+                          {{ item?.title }}
+                        </h2>
+                        <p class="text-xs lg:text-sm text-gray-600 font medium" v-if="item?.description">
+                          {{ item?.description?.slice(0, 60) }}
+                        </p>
                     </div>
                 </div>
             </div>  

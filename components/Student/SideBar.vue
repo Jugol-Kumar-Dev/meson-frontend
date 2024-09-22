@@ -10,7 +10,8 @@ const menus = ref([
   {
     name: 'Courses',
     icon: 'solar:chat-round-video-bold-duotone',
-    submenu: [
+    path: '/student/courses/enrolled',
+/*    submenu: [
       {
         name: 'Enrolled Courses',
         path: '/student/courses/enrolled',
@@ -21,11 +22,21 @@ const menus = ref([
         path: '#',
         can: ['authorization.create'],
       }
-    ]
+    ]*/
+  },
+  // {
+  //   name: 'Course Content',
+  //   path: '/student/courses/content',
+  //   icon: 'solar:home-smile-angle-bold-duotone',
+  // },
+  {
+    name: 'Live Exams',
+    path: '/student/exam/live-exam',
+    icon: 'solar:question-circle-bold-duotone',
   },
   {
-    name: 'Past Exams',
-    path: '/student/exam/pastexams',
+    name: 'Given Live Exams',
+    path: '/student/exam/live-exam/given',
     icon: 'solar:question-circle-bold-duotone',
   },
   {
@@ -34,8 +45,13 @@ const menus = ref([
     icon: 'solar:question-square-bold-duotone',
   },
   {
-    name: 'Past Classes',
-    path: '/student/dashboard',
+    name: 'Course Classes',
+    path: '/student/liveclass',
+    icon: 'solar:bookmark-square-bold-duotone',
+  },
+  {
+    name: 'Groups',
+    path: '/student/groups',
     icon: 'solar:bookmark-square-bold-duotone',
   },
   /*   {
@@ -129,10 +145,10 @@ const menus = ref([
               <template v-for="menu in item?.submenu">
                 <!--                <li v-if="user.roles[0]?.name === supperAdmin || menu.can?.some(subPer => user.can?.includes(subPer))">-->
                 <li>
-                  <RouterLink :to="menu.path" class="flex items-center gap-3 ">
+                  <NuxtLink :to="menu.path" class="flex items-center gap-3 ">
                     <Icon name="solar:check-read-line-duotone" class="text-white"/>
                     <span class="text-sm text-white">{{ menu?.name }}</span>
-                  </RouterLink>
+                  </NuxtLink>
                 </li>
               </template>
             </ul>
@@ -140,10 +156,10 @@ const menus = ref([
         </li>
         <!--        <li class="sidebar-item" v-else v-if="!item?.submenu?.length && (user.roles[0]?.name === supperAdmin || item.can?.some(permission => user.can?.includes(permission)))">-->
         <li class="sidebar-item" v-else>
-          <RouterLink :to="item.path" class="flex items-center gap-2">
+          <NuxtLink :to="item.path" class="flex items-center gap-2">
             <Icon :name="item.icon" class="text-white"/>
             <p class="text-white text-xs">{{ item?.name }}</p>
-          </RouterLink>
+          </NuxtLink>
         </li>
       </template>
     </ul>

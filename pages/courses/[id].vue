@@ -1,7 +1,7 @@
 <script setup>
 const route = useRoute();
-const {data: course, refresh, status} = await useLazyAsyncData(`single-course-${route.params?.id}`, () =>
-    $fetch(`/get-single-course/${route.params?.id}`, {
+const {data: course, refresh, status} = await useLazyAsyncData(`single-course-${route?.params?.id}`, () =>
+    $fetch(`/get-single-course/${route?.params?.id}`, {
       baseURL: useRuntimeConfig().public?.frontendAppUrl,
       headers: {
         accept: "application/json",
@@ -110,7 +110,7 @@ const features = computed(() => course?.course?.features ? JSON.parse(course?.co
                    :src="course?.course?.cover_url" alt="">
               <p class="text-2xl font-semibold p-3">৳ {{ course?.course?.price }}</p>
               <div class="mx-5">
-                <NuxtLink :to="`/admission?course=${course?.course?.id}`"
+                <NuxtLink :to="`/admission/${course?.course?.id}`"
                           class="flex items-center justify-center gap-3 w-full rounded bg-primary-500 hover:bg-purple-900 text-white px-4 py-2 text-lg font-semibold">
                   Enroll Now
                 </NuxtLink>

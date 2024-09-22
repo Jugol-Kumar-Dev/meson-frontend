@@ -24,7 +24,7 @@ export function useApiFetch<T>(path: string, options: UseFetchOptions<T> = {}) {
     }
   }
 
-  console.log("headers data", headers)
+
   return useFetch(config.public.studentAppUrl + path, {
     credentials: "include",
     watch: false,

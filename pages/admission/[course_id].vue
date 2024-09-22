@@ -15,7 +15,7 @@ const {
   data: course,
   status,
   refresh
-} = await useLazyAsyncData(`single-course-${route.query?.course}`, () => $fetch(`/get-single-course/${route.query?.course}`, {
+} = await useLazyAsyncData(`single-course-${route.query?.course}`, () => $fetch(`/get-single-course/${route?.params?.course_id}`, {
   baseURL: useRuntimeConfig().public?.frontendAppUrl,
   headers: {
     accept: "application/json",
@@ -48,8 +48,6 @@ const submitCheckout = async () =>{
       external:true,
     })
   }
-  console.log('response', )
-  console.log('error', error)
 }
 
 

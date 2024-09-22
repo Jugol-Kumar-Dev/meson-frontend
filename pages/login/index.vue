@@ -74,6 +74,9 @@ const onSubmit = async () => {
             Submit
           </button>
 
+          <div>
+            <span>Don't have account? </span><NuxtLink class="underline text-primary-500" to="/register">Register Here</NuxtLink>
+          </div>
         </form>
       </div>
 
