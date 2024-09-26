@@ -32,27 +32,32 @@ const menus = ref([
   {
     name: 'Live Exams',
     path: '/student/exam/live-exam',
-    icon: 'solar:question-circle-bold-duotone',
+    icon: 'solar:translation-bold-duotone',
   },
   {
-    name: 'Given Live Exams',
+    name: 'Past Live Exams',
     path: '/student/exam/live-exam/given',
-    icon: 'solar:question-circle-bold-duotone',
+    icon: 'solar:box-minimalistic-bold-duotone',
   },
   {
     name: 'Practice Exams',
     path: '/student/exam/practiceexam',
     icon: 'solar:question-square-bold-duotone',
   },
-  {
-    name: 'Course Classes',
-    path: '/student/liveclass',
-    icon: 'solar:bookmark-square-bold-duotone',
-  },
+  // {
+  //   name: 'Course Classes',
+  //   path: '/student/liveclass',
+  //   icon: 'solar:bookmark-square-bold-duotone',
+  // },
   {
     name: 'Groups',
     path: '/student/groups',
-    icon: 'solar:bookmark-square-bold-duotone',
+    icon: 'solar:users-group-two-rounded-bold-duotone',
+  },
+  {
+    name: 'Transactions',
+    path: '/student/transactions',
+    icon: 'solar:transfer-horizontal-bold-duotone',
   },
   /*   {
      name:'Users',
@@ -120,7 +125,7 @@ const menus = ref([
 </script>
 
 <template>
-  <div class="relative">
+  <div class="relative" id="MobileShow">
     <div class="bg-secondary-800 py-5 mb-10">
       <p class="text-white text-center uppercase tracking-widest font-bold">Messon Lms</p>
     </div>

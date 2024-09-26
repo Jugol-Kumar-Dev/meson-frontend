@@ -20,7 +20,7 @@ onMounted(() => topCatRef())
     </div>
 
     <div class="flex flex-wrap">
-      <div class="w-full lg:w-1/2 px-7 py-5" v-motion-fade-visible v-for="item in category"
+      <NuxtLink :to="{path:'/courses', query:{category:item?.id}}" class="w-full lg:w-1/2 lg:px-7 lg:py-5 py-2" v-motion-fade-visible v-for="item in category"
            :key="`single-top-cat-${item?.id}`">
         <div
             class="flex items-center gap-4 border hover:border-primary rounded-xl p-7 transition-all ease-in-out duration-500">
@@ -33,7 +33,7 @@ onMounted(() => topCatRef())
             <Icon name="material-symbols:arrow-forward-ios-rounded" class="text-xl text-gray-600"/>
           </div>
         </div>
-      </div>
+      </NuxtLink>
     </div>
   </Container>
 </template>

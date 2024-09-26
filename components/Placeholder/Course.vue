@@ -4,8 +4,8 @@ const {count} = defineProps({count: {type: Number, default: 10}})
 
 <template>
 
-  <div class="grid grid-cols-12 gap-5">
-    <div class="col-span-3 bg-white rounded-md overflow-hidden shadow-lg animate-pulse" v-for="n in count" :key="n">
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-5">
+    <div class="col-span-1 bg-white rounded-md overflow-hidden shadow-lg animate-pulse" v-for="n in count" :key="n">
       <!-- Image Placeholder -->
       <div class="h-32 bg-gray-300"></div>
 

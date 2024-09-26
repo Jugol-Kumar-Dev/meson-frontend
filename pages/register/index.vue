@@ -30,22 +30,22 @@ const errors = ref({})
 
 
 const onSubmit = async () => {
+  errors.value = null;
   pending.value = true;
   const {data, error} = await signup(state)
   errors.value = error?.value?.data
   if(error?.value){
-    alert(error)
+    push.error(error.value?.data)
   }
   if (!error.value){
     setToken(data.value)
     console.log(data.value)
     const userData = await fetchUser();
+    console.log('data', userData)
     setAuthUser(userData?.data?.value)
-    alert('login successfully done...')
+    push.success('Registration Successfully Done...')
     if(userData?.data?.value){
-      // console.log('redirect', route)
-      return navigateTo(route?.query?.redirect ?? '/')
-      // return navigateTo(route?.query?.redirect ?? '/student/dashboard')
+      return navigateTo(route?.query?.redirect ?? '/student/dashboard')
     }
   }
   pending.value = false;
@@ -56,43 +56,46 @@ const onSubmit = async () => {
 
 <template>
   <Container>
-    <div class="flex flex-col lg:flex-row items-center justify-center h-screen">
-      <div class="w-full lg:w-1/2 pt-20">
-        <form @submit.prevent="onSubmit" class="max-w-sm mx-auto px-6 lg:px-0">
+    <div class="max-w-full flex flex-col lg:flex-row items-center justify-center h-full min-h-screen">
+      <div class="p-4 mt-20 lg:p-6 w-full max-w-md lg:max-w-none">
+        <form @submit.prevent="onSubmit" class="w-full lg:max-w-sm lg:px-0">
           <h2 class="text-lg lg:text-xl font-bold text-gray-600 pb-5">Registration</h2>
-          <div class="flex flex-col gap-4">
-            {{ errors }}
+          <div class="flex flex-col gap-2">
             <input type="text" id="table-search-users"
                    v-model="state.name"
-                   class="block border border-primary w-80 p-3 ps-2 text-sm rounded text-primary-500 bg-white placeholder-slate-500 focus:ring-0 focus:border-primary focus:outline-0"
+                   :disabled="pending"
+                   class="block disabled:bg-primary-100 border border-primary w-full lg:w-80 p-3 ps-2 text-sm rounded text-primary-500 bg-white placeholder-slate-500 focus:ring-0 focus:border-primary focus:outline-0"
                    placeholder="Your Name.">
             <span v-if="errors?.errors?.name" class="text-red-500">{{ errors?.errors?.name[0] }}</span>
 
             <input type="text" id="table-search-users"
                    v-model="state.email"
-                   class="block border border-primary w-80 p-3 ps-2 text-sm rounded text-primary-500 bg-white placeholder-slate-500 focus:ring-0 focus:border-primary focus:outline-0"
+                   :disabled="pending"
+                   class="block disabled:bg-primary-100 border border-primary w-full lg:w-80 p-3 ps-2 text-sm rounded text-primary-500 bg-white placeholder-slate-500 focus:ring-0 focus:border-primary focus:outline-0"
                    placeholder="Email Address">
             <span v-if="errors?.errors?.email" class="text-red-500">{{ errors?.errors?.email[0] }}</span>
 
             <input type="text" id="table-search-users"
                    v-model="state.phone"
-                   class="block border border-primary w-80 p-3 ps-2 text-sm rounded text-primary-500 bg-white placeholder-slate-500 focus:ring-0 focus:border-primary focus:outline-0"
+                   :disabled="pending"
+                   class="block disabled:bg-primary-100 border border-primary w-full lg:w-80 p-3 ps-2 text-sm rounded text-primary-500 bg-white placeholder-slate-500 focus:ring-0 focus:border-primary focus:outline-0"
                    placeholder="Phone Number">
             <span v-if="errors?.errors?.phone" class="text-red-500">{{ errors?.errors?.phone[0] }}</span>
             <input type="password"
                    v-model="state.password"
                    id="table-search-users"
-                   class="block border border-primary w-80 p-3 ps-2 text-sm rounded text-primary-500 bg-white placeholder-slate-500 focus:ring-0 focus:border-primary focus:outline-0"
+                   :disabled="pending"
+                   class="block disabled:bg-primary-100 border border-primary w-full lg:w-80 p-3 ps-2 text-sm rounded text-primary-500 bg-white placeholder-slate-500 focus:ring-0 focus:border-primary focus:outline-0"
                    placeholder="Password">
             <span v-if="errors?.errors?.password" class="text-red-500">{{ errors?.errors?.password[0] }}</span>
 
           </div>
-          <button
-              class="flex items-center justify-center gap-3 my-5 w-80 rounded bg-primary-500 hover:bg-purple-900 text-white px-4 py-2 text-lg font-semibold">
-            Submit
-          </button>
-
+          <LoadingButton class="w-full lg:!w-80" :isLoading="pending">Register</LoadingButton>
         </form>
+        <div class="my-4">
+          <span>Alrady have account? </span>
+          <NuxtLink class="underline text-primary-500" to="/login">Login Here</NuxtLink>
+        </div>
       </div>
 
 

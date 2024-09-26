@@ -22,6 +22,9 @@ export default defineStore('auth', ()=>{
     }
 
     async function signup(signupData: any){
+        await $fetch(useRuntimeConfig().public.baseUrl+ '/sanctum/csrf-cookie',{
+            credentials:'include'
+        })
         return useApiFetch("/register", {
             method: "POST",
             body: signupData,

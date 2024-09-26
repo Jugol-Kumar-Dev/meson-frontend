@@ -1,6 +1,6 @@
 <template>
   <div class="space-y-8">
-    <div class="border-b border-dashed border-gray-200">
+    <div class="border-gray-200" :class="!props.border ? '' : 'border-b border-dashed'">
       <div class="flex justify-between items-center">
         <button @click="toggleAccordion"
             class="w-full text-left px-4 py-2">
@@ -23,6 +23,10 @@ const props = defineProps({
   title: {
     type: String,
     required: true
+  },
+  border:{
+    type:Boolean,
+    default:true
   }
 })
 

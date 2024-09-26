@@ -52,11 +52,13 @@ import {ref} from "vue";
 const {path} = defineProps({path: String})
 const isDelete = ref(false);
 const emit = defineEmits(['deleted']);
-
+const loading = ref(false)
 const handelDelete = async () => {
+  loading.value = true;
   const {data, error} = await useApiFetch(path,{method:"POST"})
   emit('deleted')
   alert("Post Deleted...")
+  loading.value = false;
 }
 
 </script>

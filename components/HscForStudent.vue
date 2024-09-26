@@ -46,7 +46,7 @@ defineProps({
             
         >
             <SwiperSlide v-for="course in sectionInfo?.courses" >
-                <div class="rounded-md w-full border hover:border-primary transition-all ease-in-out duration-500">
+                <NuxtLink :to="`/courses/${course.id}`" class="rounded-md w-full border hover:border-primary transition-all ease-in-out duration-500">
                     <div class="">
                         <img class="w-full h-36 rounded-t-md "
                              :src="course?.cover_url" alt="" />
@@ -57,7 +57,7 @@ defineProps({
                         </h2>
                         <p class="text-xs lg:text-lg  text-primary-500 font-bold">৳ {{ course?.price }}</p>
                     </div>
-                </div>
+                </NuxtLink>
             </SwiperSlide>
         </Swiper>
          
