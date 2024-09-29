@@ -1,6 +1,12 @@
 <script setup>
 import {onMounted} from "vue";
 
+const {isLogin} = useTokenStore()
+
+// definePageMeta({
+//   layout: isLogin ? 'authfront' : 'default'
+// })
+
 // Fetch categories
 const { data: categories, refresh } = await useLazyAsyncData('hero-categories', () =>
     $fetch(`/hero-categories`, {

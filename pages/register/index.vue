@@ -45,6 +45,7 @@ const onSubmit = async () => {
     setAuthUser(userData?.data?.value)
     push.success('Registration Successfully Done...')
     if(userData?.data?.value){
+      console.log(userData?.data?.value)
       return navigateTo(route?.query?.redirect ?? '/student/dashboard')
     }
   }

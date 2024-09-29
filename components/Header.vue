@@ -3,11 +3,17 @@ const {categories, settings} = defineProps({
   categories: Object,
   settings: Object,
 })
-const {isLogin} = useTokenStore()
-
+const {authUser,isLogin} = useTokenStore()
+const authStore = useAuthStore();
 const inputsearch = ref(null)
 const gocourses = () => {
   navigateTo(`/courses?search=${inputsearch.value}`)
+}
+
+const logoutUser = () => {
+  authStore.logout()
+  push.success("Logout Successfull...!")
+
 }
 
 </script>
@@ -84,11 +90,7 @@ const gocourses = () => {
                   <Icon name="material-symbols:phone-in-talk-watchface-indicator-sharp"/>
                   {{ settings?.profile?.phone }}
                 </p>
-                <NuxtLink v-if="isLogin" to="/student/dashboard"
-                          class="rounded bg-primary-500 text-center text-white text-sm font-medium px-6 py-1">
-                  Dashboard
-                </NuxtLink>
-                <NuxtLink v-else to="/login"
+                <NuxtLink to="/login"
                           class="rounded bg-primary-500 text-center text-white text-sm font-medium px-6 py-1">
                   Login
                 </NuxtLink>

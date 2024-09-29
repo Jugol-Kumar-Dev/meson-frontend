@@ -80,7 +80,7 @@ onMounted(async() =>await  refresh())
         </div>
       </div>
       <div class="flex items-center justify-between text-sm lg:text-base text-gray-600 py-4">
-        <p class="text-center text-xs">{{ new Date()?.getFullYear() }} Copyright © <a class="text-primary-500 underline" href="https://mesonacademy.com">Mesonac Ademy</a>. All rights reserved.</p>
+        <p class="text-center text-xs">{{ new Date()?.getFullYear() }} Copyright © <a class="text-primary-500 underline" href="https://mesonacademy.com">Meson Academy</a>. All rights reserved.</p>
         <p class="text-center text-xs"><a class="text-primary-500 underline" href="https://creativetechpark.com" target="_blank">Web Development Company</a> Creative Tech Park</p>
       </div>
     </Container>
