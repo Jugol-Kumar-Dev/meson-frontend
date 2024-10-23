@@ -16,7 +16,7 @@ const showMenuSidebar = ref(false);
 
     <main class="lg:ml-48 w-full lg:p-4 h-full ">
       <StudentHeader @showSidebar="showMenuSidebar = !showMenuSidebar"/>
-      <div class="mt-16 p-2 lg:p-0 h-full min-h-[79vh]">
+      <div class="mt-16 p-2 lg:p-0 h-full min-h-[79vh] relative">
         <slot />
       </div>
       <footer>

@@ -6,9 +6,7 @@ const { data,  status, refresh } =
           headers: {
             accept: "application/json",
           },
-        }))
-
-onMounted(()=> refresh())
+        }),{ immediate: true })
 </script>
 
 

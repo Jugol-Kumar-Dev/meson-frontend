@@ -20,7 +20,7 @@ const {
     Authorization: `Bearer ${useTokenStore().token}`,
     accept: "application/json",
   },
-}))
+}),{immediate:true})
 const loadExamStatus = ref(false)
 const getExamToken = async () =>{
   loadExamStatus.value = true;
@@ -38,9 +38,9 @@ const getExamToken = async () =>{
 }
 
 
-onMounted(()=>{
-  if(useRoute()?.query?.exam_id) refresh();
-})
+// onMounted(()=>{
+//   if(useRoute()?.query?.exam_id) refresh();
+// })
 
 </script>
 
@@ -48,7 +48,7 @@ onMounted(()=>{
 <template>
   <div class="w-full h-full min-h-screen">
     <!-- Main Container -->
-    <div v-if="status !== 'pending'" class="container mx-auto mt-20 bg-white shadow-lg p-10 rounded-lg">
+    <div v-if="status !== 'pending'" class="container mx-auto mt-20 bg-white shadow-lg lg:p-10 rounded-lg">
       <div class="flex flex-col lg:flex-row justify-between gap-8">
         <!-- Exam Information -->
         <div class="lg:w-1/3 bg-primary-50 p-6 rounded-lg shadow-md">
@@ -82,8 +82,8 @@ onMounted(()=>{
         </div>
 
         <!-- Action Buttons -->
-        <div class="lg:w-1/3 flex items-start justify-end">
-          <div class="flex flex-col gap-3 w-max">
+        <div class="lg:w-1/3 w-full flex items-start justify-end">
+          <div class="flex lg:flex-col w-full flex-wrap items-center justify-center gap-3 lg:w-max">
             <NuxtLink to="/student/exam/practiceexam"
                       class="flex items-center gap-2 px-5 py-3 bg-primary-200 hover:bg-primary-500 text-primary-800 hover:text-white font-semibold text-sm rounded-lg shadow-lg transition-all">
               <Icon name="solar:arrow-left-line-duotone" class="text-lg"/>
@@ -91,12 +91,12 @@ onMounted(()=>{
             </NuxtLink>
 
             <LoadingButton type="button" :isLoading="loadExamStatus" @click="getExamToken"
-                           class="flex items-center gap-2 px-5 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold text-sm rounded-lg shadow-lg transition-all">
-              <span>Start Exam</span>
+                           class="flex items-center w-max gap-2 px-5 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold text-sm rounded-lg shadow-lg transition-all">
+              Start Exam
               <Icon name="solar:arrow-right-line-duotone" class="text-lg"/>
             </LoadingButton>
             <NuxtLink :to="`/student/exam/result/practiceexam?exam_id=${$route.query?.exam_id}`"
-                      class="flex items-center gap-2 px-5 py-3 bg-green-500 hover:bg-green-600 text-white font-semibold text-sm rounded-lg shadow-lg transition-all">
+                      class="flex items-center gap-2 mb-3 px-5 py-3 bg-green-500 hover:bg-green-600 text-white font-semibold text-sm rounded-lg shadow-lg transition-all">
               <span>Results</span>
               <Icon name="solar:arrow-right-line-duotone" class="text-lg"/>
             </NuxtLink>
@@ -153,4 +153,6 @@ onMounted(()=>{
       <div class="w-full h-4 bg-gray-300"></div>
     </div>
   </div>
+
+
 </template>

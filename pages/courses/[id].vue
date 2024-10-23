@@ -1,20 +1,22 @@
 <script setup>
 const route = useRoute();
 const {data: course, refresh, status} = await useLazyAsyncData(`single-course-${route?.params?.id}`, () =>
-    $fetch(`/get-single-course/${route?.params?.id}`, {
-      baseURL: useRuntimeConfig().public?.frontendAppUrl,
-      headers: {
-        accept: "application/json",
-      },
-    })
+        $fetch(`/get-single-course/${route?.params?.id}`, {
+          baseURL: useRuntimeConfig().public?.frontendAppUrl,
+          headers: {
+            accept: "application/json",
+          },
+        }),
+    {
+      immediate: true,
+    }
 );
 
-onMounted(async () => await refresh())
 
 const frequentlyAskQuestion = computed(() => course.value?.course?.faqs ? JSON.parse(course.value?.course?.faqs) : [])
 const features = computed(() => course?.course?.features ? JSON.parse(course?.course?.features) : [])
 // const includes = computed(()=> course?.course?.inclues ? JSON.parse(course?.course?.inclues) : [])
-
+const settings = inject('profileSettings')
 </script>
 
 
@@ -72,7 +74,7 @@ const features = computed(() => course?.course?.features ? JSON.parse(course?.co
               </div>
             </div>
             <div v-else v-if="course?.course?.instractors !== 'null' && course?.course?.instractors?.length">
-              <h2  class="text-xl lg:text-4xl font-bold text-center lg:text-left text-gray-600 py-10 tracking-wider">
+              <h2 class="text-xl lg:text-4xl font-bold text-center lg:text-left text-gray-600 py-10 tracking-wider">
                 Course
                 Instructors</h2>
               <div v-if="course?.course?.instractors?.length" class="flex flex-col lg:flex-row flex-wrap">
@@ -210,7 +212,16 @@ const features = computed(() => course?.course?.features ? JSON.parse(course?.co
                 </NuxtLink>
               </div>
 
-              <h2 class="text-xl font-semibold p-3 pt-9">What is in this course</h2>
+              <h2 class="text-xl font-semibold p-3 mt-5">What is in this course</h2>
+              <div class="px-4 py-2 bg-[#fac252] text-white rounded-lg">
+                <p class="text-xl text-black font-bold">Total Enrolled: {{ course?.course?.orders_count }} Students</p>
+              </div>
+              <div class="px-4 py-2 bg-[#fac252] text-white rounded-lg mt-2"
+                   v-if="course?.course?.access_time && course?.course?.access_type">
+                <p class="text-xl text-black font-bold">Access Time: {{ course?.course?.access_time }}
+                  {{ course?.course?.access_type }}</p>
+              </div>
+
               <ul class="p-3 leading-loose text-gray-600 pl-6"
                   v-if=" course?.course?.inclues?.length">
                 <li class="flex items-center gap-5" v-for="item in course?.course?.inclues">
@@ -223,7 +234,7 @@ const features = computed(() => course?.course?.features ? JSON.parse(course?.co
                 <p class="text-gray-400">For details about the course</p>
                 <p class="flex items-center gap-1 text-primary-500 font-semibold">
                   <span class=""><Icon name="material-symbols:call-outline" class=""/></span>
-                  Call (16910)
+                  Call <a :href="`tel:${settings?.profile?.phone}`">{{ settings?.profile?.phone }}</a>
                 </p>
               </div>
             </div>

@@ -109,7 +109,7 @@ const submitCheckout = async () => {
   }
 }
 
-
+const settings = inject('profileSettings')
 </script>
 
 <template>
@@ -262,7 +262,7 @@ const submitCheckout = async () => {
               <p class="text-gray-400">For details about the course</p>
               <p class="flex items-center gap-1 text-primary-500 font-semibold">
                 <span class=""><Icon name="material-symbols:call-outline" class=""/></span>
-                Call (16910)
+                Call <a :href="`tel:${settings?.profile?.phone}`">{{ settings?.profile?.phone }}</a>
               </p>
             </div>
           </div>

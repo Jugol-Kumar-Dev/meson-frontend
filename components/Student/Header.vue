@@ -41,7 +41,7 @@ const logoutLoading = ref(false)
 const logoutUser = () => {
   logoutLoading.value = true;
   logout()
-  push.success("Logout Successfull...!")
+  // push.success("Logout Successfull...!")
 }
 const changeIcon = ref(false)
 const emit = defineEmits(['showSidebar'])

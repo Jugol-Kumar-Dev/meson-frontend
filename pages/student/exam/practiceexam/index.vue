@@ -17,9 +17,9 @@ const {
     Authorization: `Bearer ${useTokenStore().token}`,
     accept: "application/json",
   },
-}))
+}), {immediate:true})
 
-onMounted(() => refresh())
+// onMounted(() => refresh())
 
 
 </script>

@@ -18,7 +18,7 @@ const {
         Authorization: `Bearer ${useTokenStore().token}`,
         accept: "application/json",
       },
-    }))
+    }),{immediate:true})
 
 const loadExamStatus = ref(false)
 const getExamToken = async () => {
@@ -40,10 +40,10 @@ const getExamToken = async () => {
   loadExamStatus.value = false
 }
 
-
-onMounted(() => {
-  if (useRoute()?.query?.exam_id) refresh();
-})
+//
+// onMounted(() => {
+//   if (useRoute()?.query?.exam_id) refresh();
+// })
 
 </script>
 

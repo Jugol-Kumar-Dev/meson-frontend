@@ -230,10 +230,10 @@ onMounted(()=> refresh())
         <div class="flex items-center gap-3 mb-2">
           <img :src="authUser?.photo_url" @error="handleImageError($event, authUser?.name)" alt="Profile" class="w-8 h-8 rounded-full">
           <div class="relative w-full">
-            <input type="text" :disabled="commentLoading" v-model="comment.description" @keyup.enter="saveComment(blog?.id)"
+            <input type="text" :disabled="commentLoading || blog?.is_like" v-model="comment.description" @keyup.enter="saveComment(blog?.id)"
                    placeholder="Write a comment..."
                    class="w-full p-2 rounded-full border disabled:bg-primary-200 bg-gray-100 focus:outline-none focus:border-gray-300">
-            <button @click="saveComment(blog?.id)" class="absolute w-7 h-7 rounded-full top-2 right-2 hover:bg-secondary-300 text-white flex items-center justify-center">
+            <button @click="saveComment(blog?.id)" :disabled="blog?.is_like" class="absolute w-7 h-7 rounded-full top-2 right-2 hover:bg-secondary-300 text-white flex items-center justify-center">
               <Icon name="solar:plain-bold-duotone" class="text-secondary-600 rotate-45" size="19"/>
             </button>
           </div>

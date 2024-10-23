@@ -20,20 +20,31 @@ onMounted(() => topCatRef())
     </div>
 
     <div class="flex flex-wrap">
-      <NuxtLink :to="{path:'/courses', query:{category:item?.id}}" class="w-full lg:w-1/2 lg:px-7 lg:py-5 py-2" v-motion-fade-visible v-for="item in category"
-           :key="`single-top-cat-${item?.id}`">
-        <div
-            class="flex items-center gap-4 border hover:border-primary rounded-xl p-7 transition-all ease-in-out duration-500">
-          <img :src="item?.photo_url" class="w-20 h-20" alt="">
+      <NuxtLink :to="{ path: '/courses', query: { category: item?.id } }"
+                class="w-full lg:w-1/2 lg:px-7 lg:py-5 py-2"
+                v-motion-fade-visible v-for="item in category" :key="`single-top-cat-${item?.id}`">
+
+        <div class="flex items-center gap-4 border border-gray-200 hover:border-primary bg-white shadow-lg hover:shadow-2xl rounded-xl p-7 transition-all ease-in-out duration-500 hover:-translate-y-1 hover:scale-105">
+          <!-- Category Image -->
+          <img :src="item?.photo_url" class="w-20 h-20 rounded-full object-cover transition-transform duration-300 ease-in-out hover:scale-110" alt="Category Image" />
+
+          <!-- Category Content -->
           <div class="flex justify-between items-center w-full">
             <div>
-              <h2 class="text-lg lg:text-mdtext-2xl font-bold">{{ item?.name }}</h2>
-              <p class="font font-medium text-xs lg:text-md text-gray-600">Free Video, Live Class</p>
+              <h2 class="text-lg lg:text-xl font-bold text-gray-800">
+                {{ item?.name }}
+              </h2>
+              <p class="text-xs lg:text-sm font-medium text-gray-600 mt-1">
+                Free Video, Live Class
+              </p>
             </div>
-            <Icon name="material-symbols:arrow-forward-ios-rounded" class="text-xl text-gray-600"/>
+
+            <!-- Arrow Icon -->
+            <Icon name="material-symbols:arrow-forward-ios-rounded" class="text-xl text-primary-500 transition-colors duration-300 ease-in-out hover:text-primary-600" />
           </div>
         </div>
       </NuxtLink>
+
     </div>
   </Container>
 </template>

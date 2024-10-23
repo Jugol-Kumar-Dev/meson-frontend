@@ -20,7 +20,9 @@ onMounted(()=> courseRefresh())
 
 </script>
 
-<template><Container>
+<template>
+
+  <Container>
   <div class="pt-12">
     <h2 class="text-lg lg:text-4xl text-center lg:text-left font-bold text-white py-5 tracking-wider">
       Great Discounts On Select Skill Development Courses!

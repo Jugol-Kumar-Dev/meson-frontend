@@ -17,12 +17,12 @@ const {
     Authorization: `Bearer ${useTokenStore().token}`,
     accept: "application/json",
   },
-}))
+}),{immediate:true})
 </script>
 
 
 <template>
-  <div class="max-w-6xl min-h-screen w-full bg-white shadow-lg rounded-lg p-6">
+  <div class="max-w-6xl mx-auto min-h-screen w-full bg-white shadow-lg rounded-lg p-6">
     <!-- Table Heading -->
     <h2 class="text-2xl font-bold text-gray-800 mb-4">Transactions</h2>
 

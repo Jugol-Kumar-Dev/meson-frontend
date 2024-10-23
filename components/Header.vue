@@ -90,7 +90,11 @@ const logoutUser = () => {
                   <Icon name="material-symbols:phone-in-talk-watchface-indicator-sharp"/>
                   {{ settings?.profile?.phone }}
                 </p>
-                <NuxtLink to="/login"
+                <NuxtLink v-if="isLogin" to="/student/dashboard"
+                          class="rounded bg-primary-500 text-center text-white text-sm font-medium px-6 py-1">
+                  Dashboard
+                </NuxtLink>
+                <NuxtLink v-else to="/login"
                           class="rounded bg-primary-500 text-center text-white text-sm font-medium px-6 py-1">
                   Login
                 </NuxtLink>

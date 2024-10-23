@@ -8,58 +8,81 @@ const {isLogin} = useTokenStore()
 // })
 
 // Fetch categories
-const { data: categories, refresh } = await useLazyAsyncData('hero-categories', () =>
-    $fetch(`/hero-categories`, {
-      baseURL: useRuntimeConfig().public?.frontendAppUrl,
-      headers: { accept: "application/json" }
-    }), { immediate: true }
+const {data: categories, refresh} = await useLazyAsyncData('hero-categories', () =>
+        $fetch(`/hero-categories`, {
+          baseURL: useRuntimeConfig().public?.frontendAppUrl,
+          headers: {accept: "application/json"}
+        }),
+        {
+          immediate: true,
+        }
 );
 // Fetch home courses
-const { data: homeCourses, refresh: homeCourseRef } = await useLazyAsyncData('home-page-courses', () =>
-    $fetch(`/home-page-courses`, {
-      baseURL: useRuntimeConfig().public?.frontendAppUrl,
-      headers: { accept: "application/json" }
-    }), { immediate: true }
+const {data: homeCourses, refresh: homeCourseRef} = await useLazyAsyncData('home-page-courses', () =>
+        $fetch(`/home-page-courses`, {
+          baseURL: useRuntimeConfig().public?.frontendAppUrl,
+          headers: {accept: "application/json"}
+        }),
+    {
+      immediate: true,
+    }
 );
 
-onMounted(async () => {
-  await refresh()
-  await homeCourseRef()
-})
+
 </script>
 <template>
+  <!-- hero section -->
+  <section id="home"
+           class="relative bg-[url('@/assets/images/image.png')] bg-black bg-cover bg-right py-16 lg:py-24">
+    <!-- Background overlay -->
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
 
-  <!-- hero ection -->
-  <section id="home" class="bg-[url('@/assets/images/background-image.webp')] bg-black bg-cover bg-right py-12">
-    <Container v-motion-fade-visible>
-      <div class="pt-10 lg:pt-0">
-        <h2 class="text-xl lg:text-5xl text-center lg:text-left max-w-2xl font-bold text-white leading-normal">6th-HSC
-          Class
-          Online Batch Admission is Going On!</h2>
-        <p class="text-sm lg:text-lg text-center lg:text-left font-medium text-gray-400 py-3">💯 to 💯 preparation of
-          complete syllabus with experienced teachers throughout the year!</p>
+    <Container v-motion-fade-visible class="relative z-10">
+      <!-- Hero Text -->
+      <div class="pt-10 lg:pt-0 text-center lg:text-left">
+        <h2 class="text-2xl lg:text-5xl font-bold text-white leading-snug max-w-3xl mx-auto lg:mx-0">
+          6th-HSC Class Online Batch Admission is Going On!
+        </h2>
+        <p class="text-sm lg:text-lg text-gray-400 font-medium mt-4 max-w-xl mx-auto lg:mx-0">
+          💯 Comprehensive syllabus preparation with experienced teachers throughout the year!
+        </p>
       </div>
 
-
-      <div class="flex flex-wrap py-8">
+      <!-- Categories Section -->
+      <div class="grid grid-cols-2 lg:grid-cols-6 gap-6 py-10">
         <NuxtLink :to="{path:'/courses', query:{category:cat?.id}}"
-                  class="w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 px-3 lg:px-2 py-3 lg:py-0"
-                  v-for="cat in categories?.categories" :key="cat.id">
-          <div class="flex flex-col items-center justify-center w-full h-28 cursor-pointer bg-brown-600 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 border border-b-4 border-b-gray-400 shadow-md hover:border-b border-gray-500 transition-all ease-in-out">
-            <img :src="cat?.photo_url" alt="" class="w-10">
-            <p class="text-white font-medium uppercase py-2">{{ cat?.name }} ➜</p>
+            class="col-span-1"
+            v-for="cat in categories?.categories"
+            :key="cat.id"
+        >
+          <div
+              class="flex flex-col items-center justify-center w-full h-32 cursor-pointer bg-white bg-opacity-10 rounded-md backdrop-blur-md border border-b-4 border-gray-500 shadow-lg hover:border-b hover:bg-opacity-20 transition-all ease-in-out"
+          >
+            <img :src="cat?.photo_url" alt="" class="w-12 h-12 object-contain mb-2">
+            <p class="text-white text-sm lg:text-md font-semibold uppercase tracking-wide">
+              {{ cat?.name }} ➜
+            </p>
           </div>
         </NuxtLink>
       </div>
-<!--      <div class="flex gap-3 items-center justify-center">-->
-<!--        <p class="text-sm lg:text-lg text-gray-400 py-1 hover:text-primary-500">Know More About Online Batch </p>-->
-<!--        <Icon name="material-symbols:keyboard-double-arrow-right" class="text-lg lg:text-2xl text-gray-400"/>-->
-<!--      </div>-->
+
+      <!-- Optional Call-to-Action Button -->
+      <div class="text-center lg:text-left mt-8">
+        <NuxtLink to="/courses"
+                  class="inline-block px-8 py-3 bg-primary text-white font-bold rounded-lg shadow-lg hover:bg-opacity-90 transition-all">
+          Know More About Courses
+        </NuxtLink>
+      </div>
     </Container>
   </section>
-  <!-- skill development -->
-  <section class="relative bg-black" v-motion-fade-visible>
-    <div class="absolute left-0 bottom-0 w-4/6 h-full">
+
+
+  <section class="relative bg-black overflow-hidden" v-motion-fade-visible>
+    <div
+        class="absolute w-80 h-60 bg-gradient-to-br from-red-400/20 rounded-full to-transparent blur-2xl -bottom-5 -left-4"/>
+
+
+    <div class="absolute right-0 overflow-hidden">
       <svg xmlns="http://www.w3.org/2000/svg" width="1084" height="677" fill="none" viewBox="0 0 1084 677"
            class="hidden lg:block z-0 md:max-w-full h-full">
         <g clip-path="url(#clip0_11631_97147)" opacity="0.2">
@@ -116,52 +139,51 @@ onMounted(async () => {
         </defs>
       </svg>
     </div>
-
     <div>
-<!--
-      <Container class="">
-        <div class="flex flex-col lg:flex-row gap-8 pt-o">
-          <div class="w-full lg:w-1/2 px-4 lg:px-0">
-            <div
-                class="flex gap-5 items-center w-full h-24 cursor-pointer bg-brown-600 rounded-2xl bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 border border-gray-500">
-              <div class="max-w-32 h-auto pl-4">
-                <img class="" src="https://cdn.10minuteschool.com/images/HSC_26_Demo_Class_1715858895279.png?w=70&h=70"
-                     alt="">
-              </div>
-              <div class="flex items-center justify-between gap-16">
-                <div>
-                  <h1 class="text-white font-medium text-base lg:text-xl">HSC 26 Batch Free Live Class</h1>
-                  <p class="text-white text-xs lg:text-sm ">Free Live Class to Full Month</p>
+      <!--
+            <Container class="">
+              <div class="flex flex-col lg:flex-row gap-8 pt-o">
+                <div class="w-full lg:w-1/2 px-4 lg:px-0">
+                  <div
+                      class="flex gap-5 items-center w-full h-24 cursor-pointer bg-brown-600 rounded-2xl bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 border border-gray-500">
+                    <div class="max-w-32 h-auto pl-4">
+                      <img class="" src="https://cdn.10minuteschool.com/images/HSC_26_Demo_Class_1715858895279.png?w=70&h=70"
+                           alt="">
+                    </div>
+                    <div class="flex items-center justify-between gap-16">
+                      <div>
+                        <h1 class="text-white font-medium text-base lg:text-xl">HSC 26 Batch Free Live Class</h1>
+                        <p class="text-white text-xs lg:text-sm ">Free Live Class to Full Month</p>
+                      </div>
+                      <div class=" gap-1 hidden lg:block">
+                        <p class="text-white text-xs lg:text-sm ">Booking Class</p>
+                        <Icon name="material-symbols:keyboard-double-arrow-right" class="text-xl text-gray-400"/>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class=" gap-1 hidden lg:block">
-                  <p class="text-white text-xs lg:text-sm ">Booking Class</p>
-                  <Icon name="material-symbols:keyboard-double-arrow-right" class="text-xl text-gray-400"/>
+                <div class="w-full lg:w-1/2 px-4 lg:px-0">
+                  <div
+                      class="flex gap-5 items-center w-full h-24 cursor-pointer bg-brown-600 rounded-2xl bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 border border-gray-500">
+                    <div class="max-w-32 h-auto pl-4">
+                      <img class=""
+                           src="https://cdn.10minuteschool.com/images/OB_(6-9)_Demo_Class_1715858935161.png?w=70&h=70" alt="">
+                    </div>
+                    <div class="flex items-center justify-between gap-16">
+                      <div>
+                        <h1 class="text-white font-medium text-base lg:text-xl">06 - 09 Free Live Class</h1>
+                        <p class="text-white text-xs lg:text-sm ">Free Live Class to Full Month</p>
+                      </div>
+                      <div class=" gap-1 hidden lg:block">
+                        <p class="text-white text-xs lg:text-sm ">Booking Class</p>
+                        <Icon name="material-symbols:keyboard-double-arrow-right" class="text-xl text-gray-400"/>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="w-full lg:w-1/2 px-4 lg:px-0">
-            <div
-                class="flex gap-5 items-center w-full h-24 cursor-pointer bg-brown-600 rounded-2xl bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 border border-gray-500">
-              <div class="max-w-32 h-auto pl-4">
-                <img class=""
-                     src="https://cdn.10minuteschool.com/images/OB_(6-9)_Demo_Class_1715858935161.png?w=70&h=70" alt="">
-              </div>
-              <div class="flex items-center justify-between gap-16">
-                <div>
-                  <h1 class="text-white font-medium text-base lg:text-xl">06 - 09 Free Live Class</h1>
-                  <p class="text-white text-xs lg:text-sm ">Free Live Class to Full Month</p>
-                </div>
-                <div class=" gap-1 hidden lg:block">
-                  <p class="text-white text-xs lg:text-sm ">Booking Class</p>
-                  <Icon name="material-symbols:keyboard-double-arrow-right" class="text-xl text-gray-400"/>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Container>
--->
+            </Container>
+      -->
 
       <!-- offer scetion  -->
 
@@ -194,7 +216,7 @@ onMounted(async () => {
 
   <!-- Teacher Lecture Sheet -->
 
-<!--  <LectureSheet/>-->
+  <!--  <LectureSheet/>-->
 
   <!-- Success Admission -->
   <SuccessAdmission/>
